@@ -169,7 +169,7 @@ def estimatePopulationInZone(source_polygons, population_field, study_zone,
         if source_sr.factoryCode != zone_sr.factoryCode:
             raise ValueError("Source polygons and study zone must use the same coordinate system")
 
-        #Starting our calculations, creating a temp copy of source
+        #Starting calculations, creating a temp copy of source
         temp_source = str(Path(output_fc).parent / "temp_source")
 
         arcpy.management.CopyFeatures(source_polygons, temp_source)
@@ -212,8 +212,7 @@ def estimatePopulationInZone(source_polygons, population_field, study_zone,
                 total_population += row[0]
         print(f"Total estimated population: {total_population:,.0f}")
         return total_population
-        
-        #End the try statement!
+  
     except Exception as e:
         print(f"Error estimating population: {e}")
         return None
